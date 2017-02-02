@@ -42,15 +42,22 @@ function sumConsec(array) {
 //          |                |
 // [2, 1, 1, 1, 4, 3, 6, 6, 1] => [3, 4, 3, 6]"""
 
-// function edgeSum(array, startEdge, endEdge) {
-//   var result = [];
-//   var counter = startEdge - 1;
-//   for(var i = startEdge; i <= endEdge; i++){
-//     if(array[counter - 1] === array[i]){
-//       result.push(array[i] + array[i]);
-//     }
-//   }
-// }
+function edgeSum(array, startEdge, endEdge) {
+  var result = [];
+  var tempSum = array[startEdge - 1];
+  for(var i = startEdge; i <= endEdge; i++){
+    // set tempSum to the current array position. if the next position is equal to last position, add to temp;
+    // once it is not the same, push temp to result, and set temp to next value
+    if(array[i] === array[i - 1]){
+      tempSum += array[i];
+    } else {
+      result.push(tempSum);
+      tempSum = array[i];
+    }
+  }
+  result.push(tempSum);
+  return result;
+}
 
 
 
