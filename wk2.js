@@ -40,13 +40,21 @@ var sortedStack = new Stack();
 var tempStack = new Stack();
 
 function sortedInsert(value) {
-  // base case, check if top value is less than or equal to value, if true, push
-  if(sortedStack.peek() <= value){
-    sortedStack.push(value);
-  } else {
-    // pop the top off sorted and push into temp, recursively check down the stack
-    tempStack.push(sortedStack.pop());
+  function recurse(val) {
+    // base case, check if top value is less than or equal to value, if true, push
+    if(sortedStack.peek() <= value){
+      sortedStack.push(value);
+      return;
+    } else {
+      // pop the top off sorted and push into temp, recursively check down the stack
+      tempStack.push(sortedStack.pop());
+      recurse(value);
+    }
   }
+  recurse(value);
+  while(!tempStack.isEmpty()){
+    sortedStack.push(tempStack.pop());
+  };
 }
 
 
@@ -54,7 +62,9 @@ function sortedInsert(value) {
 //
 // Takes an unsorted stack and sort it. You may only use stacks (& the call stack) as a storage mechanism."""
 
-var sortStack = fun
+var sortStack = () => {
+
+}
 
 
 
