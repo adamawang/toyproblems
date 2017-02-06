@@ -53,12 +53,22 @@ LinkedList.prototype.contains = function(value){
 var theList = new LinkedList();
 
 function removeLinkListVal(list, value) {
-  if(!list.contains(value)){
-    return;
-  } else {
-    // traverse the list and when you find a matching value in 'node.next', set current node.next equal to node.next.next to skip it
-
+  // first check if head is equal to the value, remove if true
+  if(list.head.value === value){
+    list.removeHead();
   }
+  // traverse the list and when you find a matching value in 'node.next', set current node.next equal to node.next.next to skip it
+  function traverse(node) {
+    if(node.next === null){
+      return;
+    }
+    if(node.next.value === value){
+      node.next = node.next.next;
+    }
+    traverse(node.next);
+  }
+  traverse(list.head);
+  return list;
 }
 
 
