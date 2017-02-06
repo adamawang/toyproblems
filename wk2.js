@@ -59,7 +59,8 @@ function removeLinkListVal(list, value) {
   }
   // traverse the list and when you find a matching value in 'node.next', set current node.next equal to node.next.next to skip it
   function traverse(node) {
-    if(node.next === null){
+    // if at end of list and node.next.next is null, return
+    if(node.next.next === null){
       return;
     }
     if(node.next.value === value){
