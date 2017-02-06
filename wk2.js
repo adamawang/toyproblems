@@ -15,17 +15,46 @@ function removeLinkListVal(list, value) {
 //
 // Given a sorted stack and an element, insert the element into the correct position of the stack. The stack will have the methods: peek, isEmpty, push, and pop."""
 
-var stack = function(value) {
-  
-}
+var Stack = ()  => {
+  var storage = [];
+  var count = 0;
+  this.push = (value) => {
+    storage.push(value);
+    count++;
+  };
+  this.pop = () => {
+    if(count > 0){
+      count--;
+      return storage.pop();
+    }
+  };
+  this.isEmpty = () => {
+    return count === 0;
+  };
+  this.peek = () => {
+    return storage[count - 1];
+  }
+};
 
+var sortedStack = new Stack();
+var tempStack = new Stack();
+
+function sortedInsert(value) {
+  // base case, check if top value is less than or equal to value, if true, push
+  if(sortedStack.peek() <= value){
+    sortedStack.push(value);
+  } else {
+    // pop the top off sorted and push into temp, recursively check down the stack
+    tempStack.push(sortedStack.pop());
+  }
+}
 
 
 // """Sort Stack
 //
 // Takes an unsorted stack and sort it. You may only use stacks (& the call stack) as a storage mechanism."""
 
-
+var sortStack = fun
 
 
 
