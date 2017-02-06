@@ -5,8 +5,60 @@
 // Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6
 // Return: 1 --> 2 --> 3 --> 4 --> 5"""
 
-function removeLinkListVal(list, value) {
+var LinkedList = function (initialValue) {
+  this.head = new Node(initialValue);
+  this.tail = this.head;
+};
 
+var Node = function(value){
+  this.value = value;
+  this.next = null;
+}
+
+LinkedList.prototype.addToTail = function(val){
+  var temp = new Node(val);
+  if(!this.head.value){
+    this.head = temp;
+    this.tail = temp;
+  } else {
+    this.tail.next = temp;
+    this.tail = temp;
+  }
+}
+
+LinkedList.prototype.removeHead = function(){
+  if(!this.head.next){
+    this.head = null;
+    this.tail = null;
+  } else {
+    this.head = this.head.next;
+  }
+}
+
+LinkedList.prototype.contains = function(value){
+  var result = false;
+  (function checkNodes(node){
+    if(node.next === null){
+      return;
+    }
+    if(node.value === value || node.next.value === value){
+      result = true;
+    } else {
+      checkNodes(node.next);
+    }
+  }(this.head))
+  return result;
+}
+
+var theList = new LinkedList();
+
+function removeLinkListVal(list, value) {
+  if(!list.contains(value)){
+    return;
+  } else {
+    // traverse the list and when you find a matching value in 'node.next', set current node.next equal to node.next.next to skip it
+
+  }
 }
 
 
@@ -62,8 +114,32 @@ function sortedInsert(value) {
 //
 // Takes an unsorted stack and sort it. You may only use stacks (& the call stack) as a storage mechanism."""
 
-var sortStack = () => {
+var Stack = ()  => {
+  var storage = [];
+  var count = 0;
+  this.push = (value) => {
+    storage.push(value);
+    count++;
+  };
+  this.pop = () => {
+    if(count > 0){
+      count--;
+      return storage.pop();
+    }
+  };
+  this.isEmpty = () => {
+    return count === 0;
+  };
+  this.peek = () => {
+    return storage[count - 1];
+  }
+};
 
+var unsortedStack = new Stack();
+
+var sortStack = () => {
+  var tempStack = new Stack();
+  //
 }
 
 
