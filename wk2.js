@@ -53,25 +53,30 @@ LinkedList.prototype.contains = function(value){
 var theList = new LinkedList();
 
 function removeLinkListVal(list, value) {
-  // first check if head is equal to the value, remove if true
-  if(list.head.value === value){
-    list.removeHead();
-  }
+  // save previous node in variable. first set both to list head
+  let pastNode = list.head;
+  let currentNode = list.head;
   // traverse the list and when you find a matching value in 'node.next', set current node.next equal to node.next.next to skip it
   function traverse(node) {
     // if at end of list and node.next.next is null, return
-
-// TODO Fix logic here... need to catch if .next is null or will get cannot read .next property of null
-
-    // if(node.next.next === null){
-    //   return;
-    // }
-    // if(node.next.value === value){
-    //   node.next = node.next.next;
-    // }
+    if(currentNode.value === value && currentNode.next !== null){
+      pastNode.next = currentNode.next;
+      currentNode = currentNode.next;
+    }
+    if(currentNode.value === value && currentNode.next === null){
+      list.tail = pastNode;
+      pastNode.next = null;
+    }
+    if(currentNode.next === null){
+      return;
+    } else {
+      pastNode = currentNode;
+      currentNode = currentNode.next;
+    }
     traverse(node.next);
   }
-  traverse(list.head);
+  // kick off function
+  traverse(currentNode);
   return list;
 }
 
