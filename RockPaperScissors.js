@@ -1,7 +1,7 @@
 // function rockPaperPermutation (roundCount) {
 //   var results = [];
 //   var rpsArr = ["r", "p", "s"];
-  
+
 //   for(var i = 0; i < rpsArr.length; i++){
 // 	if(roundCount === 1){
 //       results.push(rpsArr[i])
@@ -63,7 +63,7 @@ function rockPaperPermutation(roundCount){
 		var temp = [];
 		for(var i = 0; i < arr.length; i++){
 			var bucket = arr[i];
-			temp = temp.concat([bucket + "r", bucket + "p", bucket + "s"]);		
+			temp = temp.concat([bucket + "r", bucket + "p", bucket + "s"]);
 		}
 		return temp;
 	}
@@ -77,12 +77,23 @@ function rockPaperPermutation(roundCount){
 console.log(rockPaperPermutation(6));
 
 
+// latest version
 
 function rockPaperPermutation(roundCount){
-	//rouds is rounds or three (set a default)
-	//initialize an array called outcomes
-	//initialize playedsofar array
-	//initialize an array with "r", "p", "s";
-	//define inner function: combos
-	
+	 var rps = ['r', 'p', 's'];
+   var results = [];
+   if(!roundCount){
+     return results;
+   }
+   function permute(builtString) {
+     // base case, if string length is equal to round count, push to results
+     if(builtString.length === roundCount){
+       results.push(builtString);
+     }
+     // else, for each of the rps letters, add to built string and recurse
+     rps.forEach(letter => permute(builtString + letter));
+   }
+   // initiate function with empty string
+   permute('');
+   return results;
 }
