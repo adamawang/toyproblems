@@ -177,3 +177,29 @@ var sortStack = () => {
 // """Given a binary tree, find its maximum depth.
 //
 // The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node."""
+var Tree = function(val) {
+  this.value = value;
+  this.children = [];
+}
+
+var tree = new Tree();
+
+var treeMaxDepth = function(tree) {
+  var maxDepth = 0;
+  // check depth first, once you hit the end of the branch, check if the depth is greater than max
+  function isDeepest(tree, depth) {
+    // base case
+    if(!tree.children){
+      if(depth > maxDepth){
+        maxDepth = depth;
+        return;
+      }
+    }
+    // recursively check each of the tree's children and increment depth;
+    for(var i = 0; i < tree.children.length; i++){
+      isDeepest(tree.children[i], depth + 1)
+    }
+  }
+  isDeepest(tree, 0);
+  return maxDepth;
+}
