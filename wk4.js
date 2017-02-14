@@ -61,7 +61,7 @@ function binaryTreeCheck(tree1, tree2) {
 // Given a list of non-negative integers representing the amount of money of each house,
 // determine the maximum amount of money you can rob tonight without alerting the police."""
 
-var houses = [1,2,3,4,5,6,7,8,9];
+var houses = [10,20,40,30,10,10,20,30];
 
 function houseRobber(array) {
   // naive solution: check every other house and add up totals, whichever one is highest, choose those houses
@@ -86,7 +86,7 @@ function houseRobber(array) {
 // The first node is considered odd, the second node even and so on ..."""
 
 function evenLinkedList(list) {
-
+  
 }
 
 

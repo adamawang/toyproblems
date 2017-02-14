@@ -4,9 +4,9 @@
 // Assuming you can only perform one transaction per day (buy or sell a stock), find the maximum profit.
 
 const maxStock = (arr) => {
-  var low = Infinity;
-  var high = -Infinity;
-  for(var i = 0; i < arr.length; i++){
+  let low = Infinity;
+  let high = -Infinity;
+  for(let i = 0; i < arr.length; i++){
     if(arr[i] < low){
       low = arr[i]
     }
@@ -14,5 +14,12 @@ const maxStock = (arr) => {
       high = arr[i];
     }
   }
+  return high - low;
+}
+
+
+const maxStock = (arr) => {
+  let low = Math.min(...arr);
+  let high = Math.max(...arr);
   return high - low;
 }
