@@ -2,11 +2,53 @@
 //
 // Two binary trees are considered equal if they are structurally identical and the nodes have the same value."""
 
+// binary trees have a value property, left, and right node properties.
+
 function binaryTreeCheck(tree1, tree2) {
   // search binary tree style, depth first and check nodes on the way down. If one of the nodes differ in value or structure, return false
   // use recursion, pass both trees into recursive function
-  
+  let result = true;
+  function traverseAndCheck(one, two) {
+    // base case, check if values match
+    if(one.value !== two.value) {
+      result = false;
+      return;
+    }
+    if(one.left && two.left) {
+      traverseAndCheck(one.left, two.left);
+    }
+    // if either does not match in structure, return false;
+    if((one.left && !two.left) || (!one.left && two.left)) {
+      result = false;
+      return;
+    }
+    if(one.right && two.right) {
+      traverseAndCheck(one.right, two.right);
+    }
+    if((one.right && !two.right) || (!one.right && two.right)) {
+      result = false;
+      return;
+    }
+  }
+  return result;
 }
+
+// this one is for normal trees, not binary
+
+// function treeCheck(tree1, tree2) {
+//   let result = true;
+//   function traverseCheck(one, two) {
+//     if(one.value !== two.value) {
+//       result = false;
+//       return;
+//     }
+//     for(var i = 0; i < one.length; i++){
+//       traverseCheck(one.children[i], two.children[i]);
+//     }
+//   }
+//   traverseCheck(tree1, tree2);
+//   return result;
+// }
 
 
 
@@ -23,6 +65,7 @@ var houses = [1,2,3,4,5,6,7,8,9];
 
 function houseRobber(array) {
   // naive solution: check every other house and add up totals, whichever one is highest, choose those houses
+
 }
 
 
@@ -54,7 +97,21 @@ function evenLinkedList(list) {
 // """
 
 function singleNumber(array) {
-
+  // push into an object, keep count. find key with value that isnt three
+  let obj = {};
+  array.forEach((val) => {
+    if(obj[val]){
+      obj[val]++;
+    } else {
+      obj[val] = 1;
+    }
+  });
+  for(let key in obj) {
+    if(obj[key] !== 3){
+      return key;
+    }
+  }
+  return true;
 }
 
 
