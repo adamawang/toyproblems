@@ -3,7 +3,9 @@
 // Two binary trees are considered equal if they are structurally identical and the nodes have the same value."""
 
 function binaryTreeCheck(tree1, tree2) {
-
+  // search binary tree style, depth first and check nodes on the way down. If one of the nodes differ in value or structure, return false
+  // use recursion, pass both trees into recursive function
+  
 }
 
 
@@ -41,7 +43,7 @@ function houseRobber(array) {
 // The first node is considered odd, the second node even and so on ..."""
 
 function evenLinkedList(list) {
-  
+
 }
 
 
