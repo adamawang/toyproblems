@@ -17,6 +17,7 @@ const maxStock = (arr) => {
   return high - low;
 }
 
+// better version
 
 const maxStock = (arr) => {
   let low = Math.min(...arr);

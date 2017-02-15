@@ -65,7 +65,16 @@ var houses = [10,20,40,30,10,10,20,30];
 
 function houseRobber(array) {
   // naive solution: check every other house and add up totals, whichever one is highest, choose those houses
-
+  let sumOdd = 0, sumEven = 0;
+  for(var i = 0; i < array.length; i++){
+    // add even houses
+    if((i + 1) % 2 === 0){
+      sumEven += array[i];
+    } else {
+      sumOdd += array[i];
+    }
+  }
+  return Math.max(sumOdd, sumEven);
 }
 
 
@@ -86,7 +95,7 @@ function houseRobber(array) {
 // The first node is considered odd, the second node even and so on ..."""
 
 function evenLinkedList(list) {
-  
+
 }
 
 
