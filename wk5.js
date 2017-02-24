@@ -74,6 +74,7 @@ WordStorage.prototype.addWord = function(word) {
 }
 
 WordStorage.prototype.search = function(word) {
+  // basic solution without full search capabilities
   if(this.storage[word]){
     return true;
   }
@@ -118,9 +119,17 @@ WordStorage.prototype.search = function(word) {
 // 9   6 3   1"""
 
 function invertBinaryTree(aTree) {
-  // traverse breadth first down tree, for each level (array), reverse it
-  // recursively reverse each of the tree's children arrays
+  // traverse depth first down tree, once you hit the end, reverse the children array
+  // recursively reverse each of the tree's children arrays on the way up
   function traverseTree(tree) {
-    
+    // base case
+    if(tree.children.length < 1){
+      return;
+    }
+    for(var i = 0; i < tree.children.length; i++){
+      traverseTree(tree.children[i]);
+    }
+    // reverse children
+    tree.children.reverse();
   }
 }
