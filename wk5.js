@@ -38,11 +38,30 @@ function binaryWatch(time) {
 
 function wellFormParens(number) {
   var result = [];
-
+  var count = number;
+  // need to permutate all possible combinations? at least one pair of parens will have to be well formed in each permutation
   return result;
 }
 
+// function for permutations:
 
+function permutate(array) {
+  var results = [];
+  function permute(arr, memo) {
+    var current;
+    memo = memo || [];
+    for(var i = 0; i < arr.length; i++){
+      curr = arr.splice(i, 1);
+      if(arr.length === 0){
+        results.push(memo.concat(current));
+      }
+      permute(arr.slice(), memo.concat(current));
+      arr.splice(i, 0, current[0])
+    }
+    return results;
+  }
+  return permute(array);
+}
 
 
 // """Add and Search Word - Data structure design
@@ -74,7 +93,7 @@ WordStorage.prototype.addWord = function(word) {
 }
 
 WordStorage.prototype.search = function(word) {
-  // basic solution without full search capabilities
+  // basic solution without full search capabilities, incomplete
   if(this.storage[word]){
     return true;
   }
@@ -121,15 +140,17 @@ WordStorage.prototype.search = function(word) {
 function invertBinaryTree(aTree) {
   // traverse depth first down tree, once you hit the end, reverse the children array
   // recursively reverse each of the tree's children arrays on the way up
-  function traverseTree(tree) {
+  function traverseAndReverse(tree) {
     // base case
     if(tree.children.length < 1){
       return;
     }
     for(var i = 0; i < tree.children.length; i++){
-      traverseTree(tree.children[i]);
+      traverseAndReverse(tree.children[i]);
     }
     // reverse children
     tree.children.reverse();
   }
+  traverseAndReverse(aTree);
+  return aTree;
 }
