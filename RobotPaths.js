@@ -49,4 +49,4 @@ var robotPaths = function(n) {
   return pathCount;
 }
 
-//# of paths = # of paths by moving up, right, down or up.
+// # of paths = # of paths by moving up, right, down or up.

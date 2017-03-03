@@ -82,6 +82,7 @@ console.log(rockPaperPermutation(6));
 function rockPaperPermutation(roundCount){
 	 var rps = ['r', 'p', 's'];
    var results = [];
+	 // if round count is zero, return
    if(!roundCount){
      return results;
    }
